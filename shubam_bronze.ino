@@ -1,11 +1,12 @@
 int t1=A0;
-  int t2=A2;
+int t2=A2;
 int pin5=5;
 int pin6=6;
 int pin7=8;
 int pin8=7;
 int irPin=4;
 int flag=0;
+int urcheck=0;
 unsigned long d=0;
 static int gantryCounter=0;
 static long StartTime=0;
@@ -27,6 +28,8 @@ pinMode(pin5,OUTPUT);
 pinMode(pin6,OUTPUT);  
 pinMode(pin7,OUTPUT);
 pinMode(pin8,OUTPUT);
+pinMode(TRIGGER_PIN,OUTPUT);
+pinMode(ECHO_PIN,INPUT);
 Serial.begin(9600);
 Serial.print("+++");  // Enter xbee AT command mode, NB no carriage return here
 delay(1500);          // Guard time
@@ -40,7 +43,7 @@ if(flag==0)
 {
  char s = Serial.read();
   switch (s) {
-        case 'S+':
+        case 'G':
       {
         flag=1;
          }
@@ -52,9 +55,12 @@ unsigned long currentMillisU = millis();
  if(currentMillisU - previousMillisU > intervalU) 
        {
          
-         previousMillisU = currentMillisU;  
-         detectObstacle(); 
+         previousMillisU = currentMillisU;
+         do{
+         		detectObstacle(); 
+         }while(urcheck == 1);
        }
+  /////////////////////////////////////////////
        
 if (flag==1)
 {
@@ -249,19 +255,10 @@ int r2=digitalRead(t2);
 }
 void detectObstacle()
 {
-delay(50);
-unsigned int uS = sonar.ping_cm();
-unsigned int distanceCm;
-pinMode(ECHO_PIN,OUTPUT);
-digitalWrite(ECHO_PIN,LOW);
-pinMode(ECHO_PIN,INPUT);
-
-//Serial.print("Ping: ");
-//Serial.print(distanceCm);
-//Serial.println("cm");
-if((distanceCm<15) && (distanceCm>0))     
-{
-stopBuggy();
-delay(1000);
+int x = sonar.ping_cm();
+if(x<=10  && x>=0){
+stopBuggy(); 
+urcheck=1;
 }
+else urcheck=0;
 }
