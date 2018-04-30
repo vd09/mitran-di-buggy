@@ -243,7 +243,7 @@ int r2=digitalRead(t2);
   digitalWrite(pin8,LOW);
   
 } 
- if(2==HIGH)
+ if(r2==HIGH)
 {
   digitalWrite(pin5,HIGH);
   digitalWrite(pin6,LOW);
