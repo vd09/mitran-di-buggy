@@ -65,8 +65,6 @@ if (flag==1)
 {
   gantry();
 }
-
-///////////////
  
  if (flag==3)
    {
@@ -175,9 +173,9 @@ d = pulseIn(irPin,HIGH);
   digitalWrite(pin6,LOW);
   digitalWrite(pin7,HIGH);
   digitalWrite(pin8,LOW);
+    StartTimeG = millis();
+    flag=3; 
   }
- StartTimeG = millis();
- flag=3; 
 }
 else
 {
@@ -207,17 +205,17 @@ if(r1==LOW&&r2==LOW)
 }
  if(r1==HIGH&&r2==LOW)
 {
-  digitalWrite(pin5,HIGH);
+  digitalWrite(pin5,LOW);
   digitalWrite(pin6,LOW);
-  digitalWrite(pin7,LOW);
+  digitalWrite(pin7,HIGH);
   digitalWrite(pin8,LOW);
   
 } if(r1==LOW&&r2==HIGH)
 {
-  digitalWrite(pin5,LOW);
+  digitalWrite(pin5,HIGH);
   digitalWrite(pin6,LOW);
+  digitalWrite(pin7,LOW);
   digitalWrite(pin8,LOW);
-  digitalWrite(pin7,HIGH);
  }
  if(r1==HIGH&&r2==HIGH)
 {
