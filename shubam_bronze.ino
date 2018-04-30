@@ -164,6 +164,7 @@ d = pulseIn(irPin,HIGH);
              Serial.println("Gantry: Unknown");
              
          }
+}
  
  if (gantryCounter>=2)
 {
@@ -177,8 +178,6 @@ d = pulseIn(irPin,HIGH);
     flag=3; 
   }
   else gantry();
-}
-else gantry();
 }
  else gantry();//CAN ALSO BE COMMENTED
 }
