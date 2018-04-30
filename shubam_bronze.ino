@@ -99,7 +99,7 @@ void gantry()
 int r1=digitalRead(t1);
 int r2=digitalRead(t2);
 if(r1==LOW&&r2==LOW)
-{
+{// MAY CHANGE WHILE TESTING
   digitalWrite(pin5,HIGH);
   digitalWrite(pin6,LOW);
   digitalWrite(pin7,HIGH);
