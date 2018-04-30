@@ -129,7 +129,7 @@ if(r1==LOW&&r2==LOW)
   digitalWrite(pin7,HIGH);
   digitalWrite(pin8,LOW);
 }
-///////////////////////////////
+
 if (digitalRead(irPin)==HIGH)
 {
  StartTime = millis();
@@ -166,7 +166,7 @@ d = pulseIn(irPin,HIGH);
              Serial.println("Gantry: Unknown");
              
          }
- 
+ ///////////////////////////////
  if (gantryCounter>=2)
 {
   if(r1==LOW && r2==LOW)
