@@ -176,14 +176,12 @@ d = pulseIn(irPin,HIGH);
     StartTimeG = millis();
     flag=3; 
   }
+  else gantry();
 }
-else
-{
-gantry();
+else gantry();
 }
 }
- 
-}
+
 void stopBuggy()
   {
   digitalWrite(pin5,LOW);
@@ -191,6 +189,7 @@ void stopBuggy()
   digitalWrite(pin7,LOW);
   digitalWrite(pin8,LOW);
   }
+
 void normalLineFollow()
 {
 int r1=digitalRead(t1);
