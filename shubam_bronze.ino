@@ -60,15 +60,14 @@ unsigned long currentMillisU = millis();
          		detectObstacle(); 
          }while(urcheck == 1);
        }
-  /////////////////////////////////////////////
        
 if (flag==1)
 {
   gantry();
-  
- 
 }
 
+///////////////
+ 
  if (flag==3)
    {
      //gantryParking();
@@ -103,7 +102,7 @@ int r1=digitalRead(t1);
 int r2=digitalRead(t2);
 if(r1==LOW&&r2==LOW)
 {
-  digitalWrite(pin5,LOW);
+  digitalWrite(pin5,HIGH);
   digitalWrite(pin6,LOW);
   digitalWrite(pin7,HIGH);
   digitalWrite(pin8,LOW);
@@ -111,16 +110,16 @@ if(r1==LOW&&r2==LOW)
 }
  if(r1==LOW&&r2==HIGH)
 {
-  digitalWrite(pin5,LOW);
+  digitalWrite(pin5,HIGH);
   digitalWrite(pin6,LOW);
-  digitalWrite(pin7,HIGH);
+  digitalWrite(pin7,LOW);
   digitalWrite(pin8,LOW);
   
 } if(r1==HIGH&&r2==LOW)
 {
-  digitalWrite(pin5,HIGH);
+  digitalWrite(pin5,LOW);
   digitalWrite(pin6,LOW);
-  digitalWrite(pin7,LOW);
+  digitalWrite(pin7,HIGH);
   digitalWrite(pin8,LOW);
  }
  if(r1==HIGH&&r2==HIGH)
@@ -129,9 +128,8 @@ if(r1==LOW&&r2==LOW)
   digitalWrite(pin6,LOW);
   digitalWrite(pin7,HIGH);
   digitalWrite(pin8,LOW);
-  
 }
-
+///////////////////////////////
 if (digitalRead(irPin)==HIGH)
 {
  StartTime = millis();
@@ -159,8 +157,8 @@ d = pulseIn(irPin,HIGH);
                 gantryCounter=gantryCounter+1;
                 Serial.print("The gantry Counter is: ");
                 Serial.println(gantryCounter);
-               // stopBuggy();
-               // delay(1000);
+                stopBuggy();
+                delay(1000);
 
             }
          else {
@@ -172,12 +170,12 @@ d = pulseIn(irPin,HIGH);
  if (gantryCounter>=2)
 {
   if(r1==LOW && r2==LOW)
-{
+  {
   digitalWrite(pin5,LOW);
   digitalWrite(pin6,LOW);
   digitalWrite(pin7,HIGH);
   digitalWrite(pin8,LOW);
-  
+  }
  StartTimeG = millis();
  flag=3; 
 }
@@ -187,7 +185,7 @@ gantry();
 }
 }
  
-}}
+}
 void stopBuggy()
   {
   digitalWrite(pin5,LOW);
